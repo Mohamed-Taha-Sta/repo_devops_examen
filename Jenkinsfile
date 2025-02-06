@@ -54,15 +54,15 @@ pipeline {
             }
         }
 
-        stage("Nexus Deploy") {
-            steps {
-                script {
+//         stage("Nexus Deploy") {
+//             steps {
+//                 script {
                     // Uncomment the next line to enable Nexus deployment
                     // sh "mvn clean package deploy:deploy -DgroupId=tn.esprit -DartifactId=FirstMavenProject -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.10.114:8081/repository/maven-releases/ -Dfile=target/FirstMavenProject-1.0.jar"
-                    echo 'Nexus deployment done'
-                }
-            }
-        }
+//                     echo 'Nexus deployment done'
+//                 }
+//             }
+//         }
 
         stage("Nexus Deploy") {
             steps {
