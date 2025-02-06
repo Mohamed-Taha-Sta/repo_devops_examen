@@ -67,7 +67,7 @@ pipeline {
         stage("Nexus Deploy") {
             steps {
                 sh """
-                    mvn deploy:deploy-file \
+                    mvn -s ~/.m2/settings.xml -X deploy:deploy-file \
                         -DrepositoryId=nexus \
                         -Durl=http://193.95.57.13:8081/repository/maven-releases/ \
                         -Dfile=target/tpAchatProject-1.0.jar \
