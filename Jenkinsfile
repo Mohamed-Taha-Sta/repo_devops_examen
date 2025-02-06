@@ -70,9 +70,9 @@ pipeline {
                     mvn deploy:deploy-file \
                     -DrepositoryId=nexus \
                     -Durl=http://193.95.57.13:8081/repository/maven-releases/ \
-                    -Dfile=target/my-app-1.0.jar \
+                    -Dfile=target/tpAchatProject-1.0.jar \
                     -DgroupId=com.example \
-                    -DartifactId=my-app \
+                    -DartifactId=tpAchatProject-1.0 \
                     -Dversion=1.0 \
                     -Dpackaging=jar \
                     -DgeneratePom=true \
