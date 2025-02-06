@@ -70,17 +70,15 @@ dockerImage = 'tpachat'
    stage('Building our image') {
 steps {
 script {
-// dockerImage = docker.build registry + ":$BUILD_NUMBER"
-echo 'Building Image'
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 }
 }
 stage('Deploy our image') {
 steps {
 script {
-// docker.withRegistry( '', registryCredential ) {
-// dockerImage.push()
-echo 'Deploying Image'
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
 }
 }
 }
