@@ -64,27 +64,9 @@ pipeline {
             }
         }
 
-        stage("Building Docker Image") {
+        stage("Final Message") {
             steps {
-                script {
-                    dockerImage = docker.build("${registry}:${BUILD_NUMBER}")
-                }
-            }
-        }
-
-        stage("Deploy Docker Image") {
-            steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
-
-        stage("Cleaning Up") {
-            steps {
-                sh "docker rmi ${registry}:${BUILD_NUMBER}"
+                echo 'Pipeline execution completed successfully!'
             }
         }
     }
