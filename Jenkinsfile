@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent any
 
     environment {
@@ -61,6 +61,24 @@ pipeline {
                     // sh "mvn clean package deploy:deploy -DgroupId=tn.esprit -DartifactId=FirstMavenProject -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.10.114:8081/repository/maven-releases/ -Dfile=target/FirstMavenProject-1.0.jar"
                     echo 'Nexus deployment done'
                 }
+            }
+        }
+
+        stage("Nexus Deploy") {
+            steps {
+                sh """
+                    mvn deploy:deploy-file \
+                    -DrepositoryId=nexus \
+                    -Durl=http://193.95.57.13:8081/repository/maven-releases/ \
+                    -Dfile=target/my-app-1.0.jar \
+                    -DgroupId=com.example \
+                    -DartifactId=my-app \
+                    -Dversion=1.0 \
+                    -Dpackaging=jar \
+                    -DgeneratePom=true \
+                    -Dusername=admin \
+                    -Dpassword=1234
+                """
             }
         }
 
